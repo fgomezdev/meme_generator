@@ -7,7 +7,7 @@ from enums import TextPosition
 
 
 class Generator:
-
+    """prueba"""
     OUTPUT_DIR = './src/memes'
     TEXT_COLOR = (255, 255, 255)
     BORDER_COLOR = (0, 0, 0)
