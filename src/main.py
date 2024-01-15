@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+""" Ejemplo de uso de la clase Generator. """
+
 from enums import TextPosition
 from generator import Generator
 
@@ -71,7 +73,7 @@ if __name__ == '__main__':
             'alias': 'gracias',
             'first_text': '¡Gracias!',
             'first_text_orientation': TextPosition.BOTTOM_CENTER,
-        },        
+        },
     ]
 
     _generator = Generator()

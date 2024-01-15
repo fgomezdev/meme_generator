@@ -1,7 +1,10 @@
+""" Enumeraciones utilizadas en el proyecto. """
+
 import enum
 
 
 class TextPosition(enum.Enum):
+    """Enumeración para las posiciones de los textos."""
 
     TOP_LEFT = 1
     TOP_CENTER = 2

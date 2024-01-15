@@ -1,3 +1,5 @@
+""" Módulo con la clase para generar memes a partir de una imagen y textos. """
+
 import os
 from io import BytesIO
 import requests
@@ -7,7 +9,8 @@ from enums import TextPosition
 
 
 class Generator:
-    """prueba"""
+    """Clase del generador de memes"""
+
     OUTPUT_DIR = './src/memes'
     TEXT_COLOR = (255, 255, 255)
     BORDER_COLOR = (0, 0, 0)
@@ -17,6 +20,17 @@ class Generator:
     FONT_SIZE = None
 
     def _get_image(self, url_or_path: str) -> Image:
+        """Obtiene una imagen a partir de una url o path
+
+        Args:
+            url_or_path (str): url o path de la imagen
+
+        Raises:
+            Exception: Error al intentar obtener la imagen
+
+        Returns:
+            Image: Imagen obtenida
+        """
 
         source_image: str | BytesIO
 
@@ -45,6 +59,17 @@ class Generator:
         border_color: tuple,
         border_size: int,
     ):
+        """Dibuja el texto en la imagen
+
+        Args:
+            image_draw_object (ImageDraw): instancia de la imagen.
+            text_position (tuple): ubicación del texto en la imagen.
+            text (str): texto para el meme.
+            font (ImageFont): fuente a utilizar.
+            text_color (tuple): color del texto.
+            border_color (tuple): color del borde del texto.
+            border_size (int): ancho del borde del texto.
+        """
 
         if not text:
             return
@@ -68,6 +93,18 @@ class Generator:
         font: ImageFont,
         text_position: TextPosition = TextPosition.TOP_RIGHT,
     ) -> tuple:
+        """Obtiene la ubicación resultante del texto en la imagen según la posición definida
+
+        Args:
+            image_width (int): ancho de la imagen
+            image_heigth (int): alto de la imagen
+            text (str): texto utilizado.
+            font (ImageFont): fuente utilizada.
+            text_position (TextPosition, optional): posición definida para el texto. Defaults to TextPosition.TOP_RIGHT.
+
+        Returns:
+            tuple: ubicación del texto en la imagen. (x, y)
+        """
 
         max_line_width = 0
         line_height = 0
@@ -158,7 +195,24 @@ class Generator:
         border_color: tuple = BORDER_COLOR,
         border_size: int = BORDER_SIZE,
     ):
-                
+        """Genera un meme a partir de una imagen, pueden proveerse hasta dos textos para agregar al meme
+
+        Args:
+            input_image_path (str): ruta de la imagen a utilizar, acepta también urls
+            output_image_path (str, optional): Ruta destino para la imagen generada. Defaults to ''.
+            alias (str, optional): nombre para el archivo. Defaults to ''.
+            first_text (str, optional): primer texto a insertar. Defaults to ''.
+            first_text_orientation (TextPosition, optional): posición donde se desea ubicar el texto. Defaults to TextPosition.TOP_RIGHT.
+            second_text (str, optional): segundo texto a insertar. Defaults to ''.
+            second_text_orientation (TextPosition, optional): posición donde se desea ubicar el texto. Defaults to TextPosition.BOTTOM_RIGHT.
+            text_color (tuple, optional): Color a utilizar para el texto. Defaults to TEXT_COLOR.
+            border_color (tuple, optional): Color a utilizar para los bordes del texto. Defaults to BORDER_COLOR.
+            border_size (int, optional): Tamaño del borde del texto. Defaults to BORDER_SIZE.
+
+        Raises:
+            Exception: Error en caso de no definir textos.
+        """
+
         if not first_text and not second_text:
             raise Exception('Debes especificar al menos un texto')
 
