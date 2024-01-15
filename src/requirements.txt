@@ -1,0 +1,8 @@
+#Dependencias funcionales
+pillow==10.2.0
+requests==2.31.0
+
+#Dependencias de desarrollo
+ruff==0.1.11
+pre-commit==3.6.0
+interrogate==1.5.0
